@@ -6,7 +6,7 @@ var client = new Twitter(config);
 var tweet_array = {};
 var username = "";
 
-var params = { screen_name: "narendramodi", count: 10 };
+var params = { screen_name: username, count: 10 };
 client.get(
   "https://api.twitter.com/1.1/statuses/user_timeline.json",
   params,
