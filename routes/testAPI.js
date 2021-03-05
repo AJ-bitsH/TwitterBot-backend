@@ -6,6 +6,7 @@ var client = new Twitter(config);
 var tweet_array = {};
 var username = "";
 
+var params = { screen_name: "narendramodi", count: 10 };
 client.get(
   "https://api.twitter.com/1.1/statuses/user_timeline.json",
   params,
@@ -21,7 +22,5 @@ router.post("/", function (req, res, next) {
   username = req.body;
   res.send(tweet_array);
 });
-
-var params = { screen_name: "narendramodi", count: 10 };
 
 module.exports = router;
