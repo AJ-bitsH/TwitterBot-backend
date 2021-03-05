@@ -4,8 +4,9 @@ var Twitter = require("twitter");
 var config = require("../config");
 var client = new Twitter(config);
 var tweet_array = {};
+var username = "";
 
-var params = { user_id: "1367067637847494658", count: 10 };
+var params = { screen_name: username, count: 10 };
 client.get(
   "https://api.twitter.com/1.1/statuses/user_timeline.json",
   params,
@@ -18,6 +19,7 @@ client.get(
 );
 
 router.get("/", function (req, res, next) {
+  username = req.body;
   res.send(tweet_array);
 });
 
