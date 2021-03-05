@@ -18,7 +18,7 @@ client.get(
   }
 );
 
-router.get("/", function (req, res, next) {
+router.post("/", function (req, res, next) {
   username = req.body;
   res.send(tweet_array);
 });
