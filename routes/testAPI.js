@@ -19,10 +19,10 @@ function helper(params) {
 }
 
 router.post("/", function (req, res, next) {
-  //var username = req.body.username;
-  //var params = { screen_name: username, count: 10 };
-  //helper(params);
-  res.send(req.body);
+  var username = req.body.username;
+  var params = { screen_name: "narendramodi", count: 10 };
+  helper(params);
+  res.send(tweet_array);
 });
 
 module.exports = router;
