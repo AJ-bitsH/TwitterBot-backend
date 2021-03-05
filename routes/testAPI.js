@@ -22,7 +22,7 @@ router.post("/", function (req, res, next) {
   var username = req.body.username;
   var params = { screen_name: username, count: 10 };
   helper(params);
-  res.send(tweet_array);
+  res.send(req.body);
 });
 
 module.exports = router;
