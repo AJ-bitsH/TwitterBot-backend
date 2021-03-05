@@ -3,7 +3,7 @@ var router = express.Router();
 var Twitter = require("twitter");
 var config = require("../config");
 var client = new Twitter(config);
-var tweet_array = {};
+var tweet_array;
 
 function helper(params) {
   client.get(
