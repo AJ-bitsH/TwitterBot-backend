@@ -20,7 +20,7 @@ function helper(params) {
 
 router.post("/", function (req, res, next) {
   var username = req.body;
-  var params = { screen_name: username, count: 10 };
+  var params = { screen_name: "narendramodi", count: 10 };
   helper(params);
   res.send(tweet_array);
 });
