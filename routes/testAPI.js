@@ -12,7 +12,7 @@ function helper(params) {
     function (error, tweets, response) {
       console.log(error);
       if (!error) {
-        tweet_array = { ...tweet_array, tweets };
+        tweet_array = tweets;
       }
     }
   );
@@ -20,9 +20,16 @@ function helper(params) {
 
 router.post("/", function (req, res, next) {
   var username = req.body.username;
-  var params = { screen_name: username, count: 10 };
+  var params = { screen_name: username, count: 100 };
   helper(params);
-  res.send(tweet_array);
+  var result = [];
+  tweet_array.map((tweet, index) => {
+    if (tweet.entities.urls.length > 0) {
+      result.push({ text: tweet.text, urls: tweet.entities.urls });
+    }
+  });
+
+  res.send(result);
 });
 
 module.exports = router;
