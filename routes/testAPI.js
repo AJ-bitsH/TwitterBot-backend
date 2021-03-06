@@ -5,13 +5,6 @@ var config = require("../config");
 var client = new Twitter(config);
 var tweet_array = {};
 
-router.post("/", function (req, res, next) {
-  var username = req.body;
-  var params = { screen_name: username, count: 10 };
-  helper(params);
-  res.send(tweet_array);
-});
-
 function helper(params) {
   client.get(
     "https://api.twitter.com/1.1/statuses/user_timeline.json",
@@ -24,5 +17,12 @@ function helper(params) {
     }
   );
 }
+
+router.post("/", function (req, res, next) {
+  var username = req.body;
+  var params = { screen_name: username, count: 10 };
+  helper(params);
+  res.send(tweet_array);
+});
 
 module.exports = router;
