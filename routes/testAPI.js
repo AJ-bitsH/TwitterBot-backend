@@ -12,7 +12,7 @@ function helper(params) {
     function (error, tweets, response) {
       console.log(error);
       if (!error) {
-        tweet_array = tweets;
+        tweet_array = { ...tweet_array, tweets };
       }
     }
   );
