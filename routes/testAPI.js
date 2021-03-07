@@ -19,8 +19,9 @@ function helper(params) {
 }
 
 router.post("/", function (req, res, next) {
-  var username = req.body.username;
-  var params = { screen_name: username, count: 100 };
+  console.log(req.body);
+  var params = { screen_name: req.body.username, count: 100 };
+
   helper(params);
   var result = [];
   tweet_array.map((tweet, index) => {
@@ -28,6 +29,8 @@ router.post("/", function (req, res, next) {
       result.push({ text: tweet.text, urls: tweet.entities.urls });
     }
   });
+
+  console.log(result);
 
   res.send(result);
 });
